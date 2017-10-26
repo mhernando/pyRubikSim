@@ -24,5 +24,5 @@ Universidad Politécnica de Madrid
  
 ### STATE CONVENTIONS:
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Image of rubik](images/conventions.png)
 
