@@ -630,7 +630,7 @@ if __name__ == '__main__':
     try:
         N = int(sys.argv[1])
     except:
-        N = 2
+        N = 3
 
     c = Cube(N)
 
