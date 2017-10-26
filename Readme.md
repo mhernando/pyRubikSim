@@ -26,14 +26,8 @@ Universidad Politécnica de Madrid
 
 ![Image of rubik](images/conventions.png)
 
-Face State order as it is internally represented:
-|---------------|
-|   | 4 |   |   |
-|---------------|
-| 0 | 1 | 2 | 3 |
-|---------------|
-|   | 5 |   |   |
-|---------------|
+The figure shows the face state order as it is internally represented.
+
 Each face is represented by state matrix (NxN) and each cell is an integuer (0-5).
 Row and columns are disposed with the origin at the upper left corner, with faces disposed as the unfolded cube states.
 
