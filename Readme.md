@@ -26,3 +26,24 @@ Universidad Politécnica de Madrid
 
 ![Image of rubik](images/conventions.png)
 
+Face State order as it is internally represented:
+|---------------|
+|   | 4 |   |   |
+|---------------|
+| 0 | 1 | 2 | 3 |
+|---------------|
+|   | 5 |   |   |
+|---------------|
+Each face is represented by state matrix (NxN) and each cell is an integuer (0-5).
+Row and columns are disposed with the origin at the upper left corner, with faces disposed as the unfolded cube states.
+
+Rotations are referred to axis relative faces.
+- The outward-pointing normal of face 1 is the X axis.
+- The outward-pointing normal of face 2 is the Y axis.
+- The outward-pointing normal of face 4 is the Z axis.
+
+Rotations are considered positive if they are ccw around the axis (math positive rotation)
+The  cube slices are considered as layers. The upper layer (faces 1, 2 or 4) have index 0, while de
+backward layers (3,0,5) have index N-1 (N is the cube dimension)
+
+Initial colors have the same index than their respective faces
