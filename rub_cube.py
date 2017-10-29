@@ -81,10 +81,9 @@ class RubCube:
                 r = self._state[f[0]][::f[2][0], -(n + 1)]
             aux.append(r)
         raux = np.roll(np.array(aux), (self._N) * n_rot)
-        i = 0
-        for f in axis['faces']:
+        
+        for i,f in enumerate(axis['faces']):
             r = raux[i]
-            i += 1
             if f[1][0] > 0:  # row +
                 self._state[f[0]][n, ::f[2][1]] = r
             elif f[1][0] < 0:  # row -
