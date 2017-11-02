@@ -38,20 +38,23 @@ Initial colors have the same index than their respective faces
 class RubCube:
     # face + rotation, face -, lateral faces (index, [tuple 1] [tuple2) tomando como base la gira +
     # giro X
-    F_axis = {'front': 1, 'back': 3, 'faces': ((2, (0, 1 ), (-1, 0)),
+    F_axis = {'front': 1, 'back': 3, 'faces': ((2, (0, 1), (-1, 0)),
                                                (4, (-1, 0), (0, -1)),
-                                               (0, (0, -1), (1, 0 )),
-                                               (5, (1, 0 ), (0,  1)))} # giro F realizado en la cara 1  capa i afecta a la i*[0,i], (0...N)*[-i 0]
+                                               (0, (0, -1), (1, 0)),
+                                               (5, (1, 0), (0,
+                                                            1)))}  # giro F realizado en la cara 1  capa i afecta a la i*[0,i], (0...N)*[-i 0]
     # giro Y
     R_axis = {'front': 2, 'back': 0, 'faces': ((3, (0, 1), (-1, 0)),
                                                (4, (0, -1), (1, 0)),
                                                (1, (0, -1), (1, 0)),
-                                               (5, (0, -1), (1, 0)))}  # giro R realizado en la cara 2  capa i afecta a la i*[0,i], (0...N)*[-i 0]
+                                               (5, (0, -1), (1,
+                                                             0)))}  # giro R realizado en la cara 2  capa i afecta a la i*[0,i], (0...N)*[-i 0]
     # giro Z
     U_axis = {'front': 4, 'back': 5, 'faces': ((0, (1, 0), (0, 1)),
                                                (1, (1, 0), (0, 1)),
                                                (2, (1, 0), (0, 1)),
-                                               (3, (1, 0), (0, 1)))}  # giro U realizado en la cara 4  capa i afecta a la i*[0,i], (0...N)*[-i 0]
+                                               (3, (1, 0), (0,
+                                                            1)))}  # giro U realizado en la cara 4  capa i afecta a la i*[0,i], (0...N)*[-i 0]
     axis_dict = {'x': F_axis, 'y': R_axis, 'z': U_axis}
 
     def __init__(self, N=3):
@@ -112,6 +115,10 @@ class RubCube:
         plt.show(block=block)
 
 
+def equal(state1, state2):
+    return np.array_equal(state1, state2)
+
+
 if __name__ == '__main__':
     import sys
 
@@ -124,6 +131,6 @@ if __name__ == '__main__':
     a.rotate_90('x', 0, -1)
     a.rotate_90('y', 0, )
     a.rotate_90('z', 0, -1)
-    c=a.get_State()
+    c = a.get_State()
     print(c)
     a.plot()
