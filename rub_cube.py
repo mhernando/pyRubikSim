@@ -10,6 +10,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import random
 from mpl_toolkits.axes_grid1 import ImageGrid
 from matplotlib import colors
 
@@ -59,9 +60,7 @@ class RubCube:
 
     def __init__(self, N=3):
         self._N = N
-        self._state = []
-        for i in range(6):
-            self._state.append(i * np.ones((N, N), dtype=np.int8))
+        self.reset()
 
     def rotate_90(self, axis_name='x', n=0, n_rot=1):
         '''rotates 90*n_rot around one axis ('x','y','z') the layer n'''
@@ -114,7 +113,19 @@ class RubCube:
             grid[p[0]].matshow(self._state[p[1]], vmin=0, vmax=5, cmap=color_map)
         plt.show(block=block)
 
-
+    def reset(self):
+        self._state = []
+        for i in range(6):
+            self._state.append(i * np.ones((self._N, self._N), dtype=np.int8))
+    def randomMoves(self, num):
+        moves=[]
+        for i in range(num):
+            x = random.choice(('x','y','z'))
+            num = random.randint(0, self._N - 1)
+            n_rot = random.randint(-1,2)
+            self.rotate_90(x,num,n_rot)
+            moves.append((x,num,n_rot))
+        return moves
 def equal(state1, state2):
     return np.array_equal(state1, state2)
 
@@ -131,6 +142,15 @@ if __name__ == '__main__':
     a.rotate_90('x', 0, -1)
     a.rotate_90('y', 0, )
     a.rotate_90('z', 0, -1)
+
     c = a.get_State()
     print(c)
+    a.plot()
+    a.reset()
+    a.plot()
+    m=a.randomMoves(5)
+    print(m)
+    a.plot()
+    for x in reversed(m):
+        a.rotate_90(x[0],x[1],-x[2])
     a.plot()
