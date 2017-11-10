@@ -35,6 +35,11 @@ backward layers (3,0,5) have index N-1 (N is the cube dimension)
 Initial colors have the same index than their respective faces
 '''
 
+def totuple(a):
+    try:
+        return tuple(totuple(i) for i in a)
+    except TypeError:
+        return a
 
 class RubCube:
     # face + rotation, face -, lateral faces (index, [tuple 1] [tuple2) tomando como base la gira +
@@ -96,10 +101,10 @@ class RubCube:
                 self._state[f[0]][::f[2][0], -(n + 1)] = r
 
     def set_State(self, state):
-        self._state = np.copy(state)
+        self._state = np.array(state)
 
     def get_State(self):
-        return np.copy(self._state)
+        return totuple(self._state)
 
     def plot(self, block=True):
         plot_list = ((1, 4), (4, 0), (5, 1), (6, 2), (7, 3), (9, 5))
@@ -126,8 +131,7 @@ class RubCube:
             self.rotate_90(x,num,n_rot)
             moves.append((x,num,n_rot))
         return moves
-def equal(state1, state2):
-    return np.array_equal(state1, state2)
+
 
 
 if __name__ == '__main__':
