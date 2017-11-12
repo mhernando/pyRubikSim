@@ -41,3 +41,13 @@ The  cube slices are considered as layers. The upper layer (faces 1, 2 or 4) hav
 backward layers (3,0,5) have index N-1 (N is the cube dimension)
 
 Initial colors have the same index than their respective faces
+
+###example of use:
+```
+import rub_cube as rb
+b=rb.RubCube(3)
+b.rotate_90('x',0,1)
+b.rotate_90('y',1,1)
+b.plot()
+a=b.get_State()
+```
