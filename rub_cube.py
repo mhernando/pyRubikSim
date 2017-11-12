@@ -152,7 +152,7 @@ if __name__ == '__main__':
     a.plot()
     a.reset()
     a.plot()
-    m=a.randomMoves(5)
+    m=a.randomMoves(4)
     print(m)
     a.plot()
     for x in reversed(m):

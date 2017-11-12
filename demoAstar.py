@@ -58,9 +58,11 @@ class Astar:
             act.append(n_state.action)
             n_state=n_state.parent
         return act[-2::-1]
-    def solve(self, init):
+    def solve(self, init, f=None):
         self.closed=[]
-        self.open=[Node(init,0,self.heur(init),("x",0,0),None),]
+        if not f:f=self.heur
+        self.open=[Node(init,0,f(init),("x",0,0),None),]
+
         while self.open:
             print("explorados: "+str(len(self.closed)) + " Vivos: "+ str(len(self.open))+
                   "mejor f: "+str(self.open[0].f))
@@ -86,7 +88,7 @@ class Astar:
                         self.open[ind]=n
                 else: #es un nuevo nodo,
                     #calculo h y fy lo agrego
-                    n.h = self.heur(n.state)
+                    n.h = f(n.state)
                     n.f = n.h + n.g
                     self.open.append(n)
         return None
@@ -130,6 +132,7 @@ b.plot()
 #b.rotate_90('y')
 #b.rotate_90('z',1)
 print("Sol:" , sol.solve(b.get_State()))
+print("Dikjstra Sol:" , sol.solve(b.get_State(),sol.heurDijkstra))
 b.reset()
 b.randomMoves(4)
 b.plot()
